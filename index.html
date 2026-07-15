@@ -46,6 +46,35 @@
     Ver mi perfil de Discord
 </a>
 
+<div class="music-player">
+
+    <img id="cover" src="javier.webp" alt="Portada">
+
+    <div class="music-info">
+        <h3>
+Ogryzek - AURA</h3>
+        <p>SIGMA</p>
+
+        <input type="range" id="progress" value="0">
+
+        <div class="time">
+            <span id="current">0:00</span>
+            <span id="duration">0:00</span>
+        </div>
+
+        <div class="controls">
+            <button id="play">
+                <i class="fa-solid fa-play"></i>
+            </button>
+        </div>
+    </div>
+
+    <audio id="audio">
+        <source src="Ogryzek - AURA.mp3" type="audio/mpeg">
+    </audio>
+
+</div>
+
 <div class="socials">
 
     <a href="https://discord.com/users/1192236737565577287" target="_blank">
@@ -226,6 +255,99 @@ body::before{
     margin-top:30px;
 }
 
+.music-player{
+    margin:30px auto;
+
+    width:370px;
+    max-width:100%;
+
+    display:flex;
+    gap:18px;
+
+    padding:18px;
+
+    background:rgba(255,255,255,.08);
+
+    border:2px solid rgba(255,255,255,.15);
+
+    border-radius:18px;
+
+    backdrop-filter:blur(15px);
+}
+
+.music-player img{
+    width:95px;
+    height:95px;
+
+    border-radius:14px;
+
+    object-fit:cover;
+
+    box-shadow:0 0 15px rgba(255,0,255,.4);
+}
+
+.music-info{
+    flex:1;
+}
+
+.music-info h3{
+    margin:0;
+    color:white;
+    font-size:18px;
+}
+
+.music-info p{
+    margin:6px 0 15px;
+    color:#d9d9d9;
+    font-size:14px;
+}
+
+#progress{
+    width:100%;
+    cursor:pointer;
+    accent-color:#ff00ff;
+}
+
+.time{
+    display:flex;
+    justify-content:space-between;
+
+    color:white;
+
+    font-size:13px;
+
+    margin-top:6px;
+}
+
+.controls{
+    margin-top:15px;
+}
+
+.controls button{
+
+    width:55px;
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#ff00ff;
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.controls button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px #ff00ff;
+}
+
 .socials a{
     width:65px;
     height:65px;
@@ -285,3 +407,70 @@ body::before{
 }
 
 </style>
+
+<script>
+
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("play");
+const progress = document.getElementById("progress");
+
+const current = document.getElementById("current");
+const duration = document.getElementById("duration");
+
+let playing = false;
+
+playBtn.onclick = () => {
+
+    if(!playing){
+
+        audio.play();
+
+        playBtn.innerHTML='<i class="fa-solid fa-pause"></i>';
+
+        playing=true;
+
+    }else{
+
+        audio.pause();
+
+        playBtn.innerHTML='<i class="fa-solid fa-play"></i>';
+
+        playing=false;
+
+    }
+
+};
+
+audio.addEventListener("loadedmetadata",()=>{
+
+    progress.max=Math.floor(audio.duration);
+
+    duration.textContent=format(audio.duration);
+
+});
+
+audio.addEventListener("timeupdate",()=>{
+
+    progress.value=Math.floor(audio.currentTime);
+
+    current.textContent=format(audio.currentTime);
+
+});
+
+progress.oninput=()=>{
+
+    audio.currentTime=progress.value;
+
+};
+
+function format(sec){
+
+    const min=Math.floor(sec/60);
+
+    const s=Math.floor(sec%60);
+
+    return min+":"+(s<10?"0":"")+s;
+
+}
+
+</script>
