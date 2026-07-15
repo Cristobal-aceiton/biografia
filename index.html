@@ -19,6 +19,8 @@
     <source src="background.mp4" type="video/mp4">
 </video>
 
+<div class="container">
+
 <div class="card-1">
 
     <div class="avatar">
@@ -64,6 +66,8 @@
 
 </div>
 
+</div>
+
 </body>
 </html>
 
@@ -86,7 +90,7 @@ body::before{
     content:"";
     position:fixed;
     inset:0;
-    background:rgba(0, 0, 0, 0.212);
+    background:rgba(148, 1, 141, 0.459);
     z-index:-1;
 }
 
@@ -115,15 +119,15 @@ body::before{
     display:block;
     margin:auto;
 
-    border:5px solid rgb(255,230,0);
+    border:5px solid rgb(165, 0, 165);
 
     transition:.3s;
-    box-shadow:0 0 30px rgba(255,230,0,.45);
+    box-shadow:0 0 30px rgb(173, 1, 173);
 }
 
 .avatar img:hover{
     transform:scale(1.05);
-    box-shadow:0 0 50px rgba(255,230,0,.8);
+    box-shadow:0 0 50px rgb(126, 0, 126);
 }
 
 .online{
@@ -165,7 +169,7 @@ body::before{
 
     margin:20px auto 0;
 
-    background:rgba(201,171,2,.8);
+    background:rgba(255, 0, 255, 0.534);
     padding:8px 15px;
 
     width:fit-content;
@@ -174,7 +178,7 @@ body::before{
 }
 
 .card-2{
-    background:rgba(201,171,2,.78);
+    background:rgba(255, 0, 255, 0.534);
 
     color:white;
 
@@ -197,19 +201,22 @@ body::before{
     margin-top:10px;
     padding:15px 35px;
 
-    background:#c9ab02;
+    background:rgba(255, 0, 255, 0.836);
     color:white;
 
     border-radius:12px;
     text-decoration:none;
     font-weight:bold;
+    margin: 0 auto;
+    display:block;
+    text-align:center;
 
     transition:.3s;
 }
 
 .btn:hover{
     transform:scale(1.05);
-    box-shadow:0 0 25px gold;
+    box-shadow:0 0 25px rgb(255, 0, 255);
 }
 
 .socials{
@@ -233,7 +240,7 @@ body::before{
 
     border-radius:15px;
 
-    color:rgb(216,184,3);
+    color:rgb(255, 0, 255);
 
     text-decoration:none;
 
@@ -247,11 +254,11 @@ body::before{
 .socials a:hover{
     transform:translateY(-6px) scale(1.08);
 
-    background:rgb(201,171,2);
+    background:rgb(255, 0, 255);
 
     color:black;
 
-    border-color:rgb(255,230,0);
+    border-color:rgb(255, 0, 255);
 
     box-shadow:0 0 20px rgba(255,230,0,.4);
 }
@@ -266,6 +273,15 @@ body::before{
         opacity:1;
         transform:translateY(0);
     }
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.384);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 20px;
 }
 
 </style>
